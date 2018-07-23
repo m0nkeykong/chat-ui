@@ -6,10 +6,11 @@ export default class MessageBox extends Component {
     constructor(props) {
         super(props)
         this.state = {
-                    avatar: '',
-                    username: '',
-                    text: '',
-                    timestamp: ''
+            avatar: '',
+            username: '',
+            text: '',
+            timestamp: '',
+            socketid: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.emitMessage = this.emitMessage.bind(this)
@@ -21,7 +22,7 @@ export default class MessageBox extends Component {
     componentWillMount(){
         this.setState({
             avatar: JSON.parse(sessionStorage.getItem('userDetails')).imageUrl,
-            username: JSON.parse(sessionStorage.getItem('userDetails')).username,
+            username: JSON.parse(sessionStorage.getItem('userDetails')).username
         })
     }
 
@@ -33,7 +34,7 @@ export default class MessageBox extends Component {
 
     //emit user message
     emitMessage(e){
-        e.preventDefault()
+        //e.preventDefault()
         this.state.text ?                   //this validates that the user has infect inserted a message - not 'blank'
         new Promise((resolve) => {
             this.setState({

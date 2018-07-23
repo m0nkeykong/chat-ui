@@ -9,7 +9,7 @@ export default class TextMessage extends Component {
 
     render(){
         return(
-            this.props.msg.owner == 'user' ?            //if message belongs to user, render this component (so the user can differ from his own messages and other user's messages)
+            this.props.msg.socketid == sessionStorage.getItem('socketid') ?            //if message belongs to user, render this component (so the user can differ from his own messages and other user's messages)
             <div style={{ border: '1px solid gray', borderRadius: '5px', margin: '5px 5px 5px 5px', background: '#92a8d1'}}>
                 <article name='avatar' style={{height: '30px', width: '30px', float: 'left'}}>
                     <img style={{ height: '30px', width: '30px', margin: '5px 0 0 5px' }} src={this.props.msg.avatar}/>
